@@ -1,24 +1,88 @@
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { register, reset } from "../features/auth/authSlice";
 const Register = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    password2: "",
+  });
+
+  const dispatch = useDispatch();
+  //destrucute state object
+  const { name, email, password, password2 } = formData;
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+    console.log(formData);
+  };
+
+  //form submit
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (password !== password2) {
+      toast.error(`Passwords do not match`);
+    } else {
+      const userData = {
+        name,
+        email,
+        password,
+      };
+      dispatch(register(userData));
+    }
+  };
   return (
-    <Form className="form">
+    <Form onSubmit={onSubmit} className="form">
       <Form.Group className="name ">
         <Form.Label>Name:</Form.Label>
-        <Form.Control type="name" placeholder="enter name" />
+        <Form.Control
+          type="text"
+          id="name"
+          name="name"
+          value={name}
+          onChange={onChange}
+          placeholder="enter name"
+        />
       </Form.Group>
       <Form.Group className="email ">
         <Form.Label>Email address:</Form.Label>
-        <Form.Control type="email" placeholder="enter email" />
+        <Form.Control
+          type="text"
+          id="email"
+          name="email"
+          value={email}
+          onChange={onChange}
+          placeholder="enter email"
+        />
       </Form.Group>
       <Form.Group className="password ">
         <Form.Label>Password:</Form.Label>
-        <Form.Control type="password" placeholder="enter password" />
+        <Form.Control
+          type="text"
+          id="password"
+          name="password"
+          value={password}
+          onChange={onChange}
+          placeholder="enter password"
+        />
       </Form.Group>
       <Form.Group className="password ">
         <Form.Label> Confirm Password:</Form.Label>
-        <Form.Control type="password" placeholder="confirm password" />
+        <Form.Control
+          type="text"
+          id="password2"
+          name="password2"
+          value={password2}
+          onChange={onChange}
+          placeholder="confirm password"
+        />
       </Form.Group>
       <br />
       <Button
