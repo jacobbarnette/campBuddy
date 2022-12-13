@@ -4,20 +4,19 @@ import Form from "react-bootstrap/Form";
 import { toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { register, reset } from "../features/auth/authSlice";
-
-const Register = () => {
+import { createCampground } from "../features/campground/campgroundSlice";
+const AddCampground = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    password2: "",
+    title: "",
+    location: "",
+    description: "",
+    image: "",
   });
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   //destrucute state object
-  const { name, email, password, password2 } = formData;
+  const { title, location, description, image } = formData;
 
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
@@ -27,11 +26,6 @@ const Register = () => {
     if (isError) {
       toast.error(message);
     }
-    if (isSuccess || user) {
-      navigate("/");
-    }
-
-    dispatch(reset());
   }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   const onChange = (e) => {
@@ -44,61 +38,60 @@ const Register = () => {
   //form submit
   const onSubmit = (e) => {
     e.preventDefault();
-    if (password !== password2) {
-      toast.error(`Passwords do not match`);
-    } else {
-      const userData = {
-        name,
-        email,
-        password,
-      };
-      dispatch(register(userData));
-    }
+
+    const campgroundData = {
+      title,
+      location,
+      description,
+      image,
+    };
+
+    dispatch(createCampground(campgroundData));
   };
   return (
     <Form onSubmit={onSubmit} className="form">
-      <Form.Group className="name ">
-        <Form.Label>Name:</Form.Label>
+      <Form.Group className="title">
+        <Form.Label>Title:</Form.Label>
         <Form.Control
           type="text"
-          id="name"
-          name="name"
-          value={name}
+          id="title"
+          name="title"
+          value={title}
           onChange={onChange}
-          placeholder="enter name"
+          placeholder="enter title"
         />
       </Form.Group>
-      <Form.Group className="email ">
-        <Form.Label>Email address:</Form.Label>
+      <Form.Group className="location">
+        <Form.Label>Location:</Form.Label>
         <Form.Control
           type="text"
-          id="email"
-          name="email"
-          value={email}
+          id="location"
+          name="location"
+          value={location}
           onChange={onChange}
-          placeholder="enter email"
+          placeholder="enter location"
         />
       </Form.Group>
-      <Form.Group className="password ">
-        <Form.Label>Password:</Form.Label>
+      <Form.Group className="description ">
+        <Form.Label>Description:</Form.Label>
         <Form.Control
           type="text"
-          id="password"
-          name="password"
-          value={password}
+          id="description"
+          name="description"
+          value={description}
           onChange={onChange}
-          placeholder="enter password"
+          placeholder="enter description"
         />
       </Form.Group>
-      <Form.Group className="password ">
-        <Form.Label> Confirm Password:</Form.Label>
+      <Form.Group className="image">
+        <Form.Label>Image:</Form.Label>
         <Form.Control
           type="text"
-          id="password2"
-          name="password2"
-          value={password2}
+          id="image"
+          name="image"
+          value={image}
           onChange={onChange}
-          placeholder="confirm password"
+          placeholder="confirm image"
         />
       </Form.Group>
       <br />
@@ -109,10 +102,10 @@ const Register = () => {
         variant="primary"
         type="submit"
       >
-        Register
+        Add Campground
       </Button>
     </Form>
   );
 };
 
-export default Register;
+export default AddCampground;
