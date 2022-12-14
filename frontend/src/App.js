@@ -4,6 +4,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Header from "./pages/Header";
 import AddCampground from "./pages/AddCampground";
+import Campgrounds from "./pages/Campgrounds";
+import CampgroundsById from "./pages/CampgroundsById";
 import { ToastContainer } from "react-bootstrap";
 const App = () => {
   return (
@@ -15,6 +17,8 @@ const App = () => {
           <Route path="/Login" element={<Login />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/addCampground" element={<AddCampground />} />
+          <Route path="/Campgrounds" element={<Campgrounds />} />
+          <Route path="Campgrounds/:id" element={<CampgroundsById />} />
         </Routes>
       </Router>
       <ToastContainer />

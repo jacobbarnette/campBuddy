@@ -5,7 +5,15 @@ const User = require("../models/userModel");
 
 //get all campgrounds
 const getCampgrounds = asyncHandler(async (req, res) => {
-  res.send("this is where all campgrounds will live");
+  const campgrounds = await Campground.find({});
+  res.status(200).json(campgrounds);
+});
+
+const getCampgroundById = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const campground = await Campground.findById(id);
+
+  res.json(campground);
 });
 
 //post campground
@@ -26,4 +34,4 @@ const postCampground = asyncHandler(async (req, res) => {
   res.status(200).json(campground);
 });
 
-module.exports = { getCampgrounds, postCampground };
+module.exports = { getCampgrounds, postCampground, getCampgroundById };

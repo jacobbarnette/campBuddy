@@ -13,6 +13,13 @@ const AddCampground = () => {
     image: "",
   });
 
+  const initialState = {
+    title: "",
+    location: "",
+    description: "",
+    image: "",
+  };
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   //destrucute state object
@@ -35,6 +42,9 @@ const AddCampground = () => {
     }));
   };
 
+  const resetFormData = () => {
+    setFormData(initialState);
+  };
   //form submit
   const onSubmit = (e) => {
     e.preventDefault();
@@ -47,7 +57,9 @@ const AddCampground = () => {
     };
 
     dispatch(createCampground(campgroundData));
+    resetFormData();
   };
+
   return (
     <Form onSubmit={onSubmit} className="form">
       <Form.Group className="title">

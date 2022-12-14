@@ -25,7 +25,9 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
-              <Nav.Link>Campgrounds</Nav.Link>
+              <LinkContainer to="/Campgrounds">
+                <Nav.Link>Campgrounds</Nav.Link>
+              </LinkContainer>
               <LinkContainer to="addCampground">
                 <Nav.Link>Add New</Nav.Link>
               </LinkContainer>
