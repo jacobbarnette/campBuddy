@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -7,6 +9,7 @@ import AddCampground from "./pages/AddCampground";
 import Campgrounds from "./pages/Campgrounds";
 import CampgroundsById from "./pages/CampgroundsById";
 import { ToastContainer } from "react-bootstrap";
+import { getAllCampgrounds } from "../src/features/campground/campgroundService";
 const App = () => {
   return (
     <>

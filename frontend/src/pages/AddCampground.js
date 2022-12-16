@@ -6,11 +6,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createCampground } from "../features/campground/campgroundSlice";
 const AddCampground = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     title: "",
     location: "",
     description: "",
     image: "",
+    price: "",
   });
 
   const initialState = {
@@ -18,12 +22,11 @@ const AddCampground = () => {
     location: "",
     description: "",
     image: "",
+    price: "",
   };
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   //destrucute state object
-  const { title, location, description, image } = formData;
+  const { title, location, description, image, price } = formData;
 
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
@@ -54,6 +57,7 @@ const AddCampground = () => {
       location,
       description,
       image,
+      price,
     };
 
     dispatch(createCampground(campgroundData));
@@ -104,6 +108,17 @@ const AddCampground = () => {
           value={image}
           onChange={onChange}
           placeholder="confirm image"
+        />
+      </Form.Group>
+      <Form.Group className="price">
+        <Form.Label>Price:</Form.Label>
+        <Form.Control
+          type="text"
+          id="price"
+          name="price"
+          value={price}
+          onChange={onChange}
+          placeholder="enter price"
         />
       </Form.Group>
       <br />

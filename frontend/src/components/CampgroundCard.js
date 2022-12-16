@@ -4,12 +4,6 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 const CampgroundCard = ({ campground }) => {
   const navigate = useNavigate();
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.auth
-  );
-  if (campground.user === user._id) {
-    console.log("hello");
-  }
 
   const onClick = () => {
     navigate(`${campground._id}`);
