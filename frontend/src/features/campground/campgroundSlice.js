@@ -157,7 +157,6 @@ export const campgroundSlice = createSlice({
           existingCampground.description = description;
           existingCampground.image = image;
         }
-        console.log(action.payload, existingCampground);
       })
       .addCase(editCampground.rejected, (state, action) => {
         state.isLoading = false;

@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import CampgroundCard from "../components/CampgroundCard";
 import { getAllCampgrounds } from "../features/campground/campgroundSlice";
+
 const Campgrounds = () => {
   const dispatch = useDispatch();
 

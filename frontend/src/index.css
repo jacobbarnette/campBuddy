@@ -4,3 +4,54 @@
   width: 50%;
 }
 
+/* landing page styles */
+
+body {
+  background-color: #cccccc; 
+  height: 500px; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+}
+
+.navbar-brand, .nav-link{
+  color: white !important;
+}
+
+.welcome {
+  font-size: 2em;
+  color: white;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  background-image: url("https://images.unsplash.com/photo-1631635589499-afd87d52bf64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8");
+  background-color: #cccccc; 
+  height: 500px; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+.welcomeTxt {
+  position: relative;
+  top: 30%;
+  text-align: center;
+    color: white;
+    vertical-align: middle;
+    font-size: 0.8em;
+}
+
+.homeLoginBtn {
+  margin: 0 auto;
+}
+
+
+
+

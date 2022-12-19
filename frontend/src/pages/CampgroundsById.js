@@ -115,7 +115,7 @@ const CampgroundsById = () => {
         </Col>
         <Col>
           <Card key={renderedCampground[0]._id}>
-            <Card.Img variant="top" src={image} />
+            <Card.Img variant="top" src={renderedCampground[0].image} />
             <Card.Body>
               <Card.Title>{renderedCampground[0].title}</Card.Title>
               <Card.Text>{renderedCampground[0].description}</Card.Text>

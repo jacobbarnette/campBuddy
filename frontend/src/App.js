@@ -10,6 +10,7 @@ import Campgrounds from "./pages/Campgrounds";
 import CampgroundsById from "./pages/CampgroundsById";
 import { ToastContainer } from "react-bootstrap";
 import { getAllCampgrounds } from "../src/features/campground/campgroundService";
+import "./index.css";
 const App = () => {
   return (
     <>
