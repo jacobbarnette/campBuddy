@@ -91,6 +91,8 @@ const AddCampground = () => {
       <Form.Group className="description ">
         <Form.Label>Description:</Form.Label>
         <Form.Control
+          as="textarea"
+          rows={4}
           type="text"
           id="description"
           name="description"

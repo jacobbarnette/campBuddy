@@ -1,8 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import { redirect, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { FaTrash, FaPen } from "react-icons/fa";
+
 import {
   deleteCampground,
   editCampground,
@@ -76,11 +78,13 @@ const CampgroundsById = () => {
 
   //check if user added campground, if true render delete/edit btn
   const didUserAddCampground = () => {
-    if (user._id === renderedCampground[0].user) {
+    if (user === null) {
+    } else if (user._id === renderedCampground[0].user) {
       return (
-        <>
-          <Button variant="primary" onClick={handleShow}>
-            Edit Campground
+        <div className="btnContainer">
+          <br />
+          <Button variant="primary" className="editBtn" onClick={handleShow}>
+            <FaPen></FaPen> Edit Campground
           </Button>
           <Button
             variant="danger"
@@ -89,18 +93,19 @@ const CampgroundsById = () => {
               navigate("/Campgrounds");
             }}
           >
-            Delete
+            <FaTrash /> Delete
           </Button>
-        </>
+        </div>
       );
     }
   };
 
   return (
-    <Container>
+    <Container className="cardIdContainer">
+      <br />
       <Row>
-        <Col>
-          <ListGroup>
+        <Col className="listGrpContainer">
+          <ListGroup className="listGrpContainer">
             {campgrounds.map((campground) => {
               return (
                 <ListGroup.Item
@@ -113,10 +118,15 @@ const CampgroundsById = () => {
             })}
           </ListGroup>
         </Col>
-        <Col>
+        <Col className="individualCard">
           <Card key={renderedCampground[0]._id}>
-            <Card.Img variant="top" src={renderedCampground[0].image} />
-            <Card.Body>
+            <Card.Img
+              variant="top"
+              className="individualImg"
+              src={renderedCampground[0].image}
+            />
+            <br />
+            <Card.Body className="cardBody individualCard">
               <Card.Title>{renderedCampground[0].title}</Card.Title>
               <Card.Text>{renderedCampground[0].description}</Card.Text>
             </Card.Body>
@@ -130,7 +140,7 @@ const CampgroundsById = () => {
             <Modal.Title>Edit {renderedCampground[0].title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form onSubmit={onSubmit} className="form">
+            <Form onSubmit={onSubmit} className="">
               <Form.Group className="title">
                 <Form.Label>Title:</Form.Label>
                 <Form.Control
@@ -141,7 +151,6 @@ const CampgroundsById = () => {
                   onChange={onChange}
                   placeholder={"enter title"}
                 />{" "}
-                lol
               </Form.Group>
               <Form.Group className="location">
                 <Form.Label>Location:</Form.Label>
@@ -157,6 +166,8 @@ const CampgroundsById = () => {
               <Form.Group className="description ">
                 <Form.Label>Description:</Form.Label>
                 <Form.Control
+                  as="textarea"
+                  rows={4}
                   type="text"
                   id="description"
                   name="description"
@@ -177,15 +188,6 @@ const CampgroundsById = () => {
                 />
               </Form.Group>
               <br />
-              <Button
-                style={{ width: "100%" }}
-                classname="registerBtn"
-                size="lg"
-                variant="primary"
-                type="submit"
-              >
-                Add Campground
-              </Button>
             </Form>
           </Modal.Body>
           <Modal.Footer>

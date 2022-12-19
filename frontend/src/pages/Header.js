@@ -20,7 +20,13 @@ const Header = () => {
   if (location.pathname === "/") {
     return (
       <>
-        <Navbar className="navBar" fixed="top">
+        <Navbar
+          variant="dark"
+          className="navBar"
+          bg="transparent"
+          expand="lg"
+          fixed="top"
+        >
           <Container>
             <LinkContainer to="/">
               <Navbar.Brand>CampBuddy</Navbar.Brand>
@@ -32,7 +38,7 @@ const Header = () => {
                   <Nav.Link>Campgrounds</Nav.Link>
                 </LinkContainer>
                 <LinkContainer to="addCampground">
-                  <Nav.Link>Add New</Nav.Link>
+                  <Nav.Link>New Campground</Nav.Link>
                 </LinkContainer>
               </Nav>
               <Nav className="ms-auto">
@@ -74,7 +80,7 @@ const Header = () => {
   } else {
     return (
       <>
-        <Navbar className="navBar" bg="dark" fixed="top">
+        <Navbar className="navBar" expand="lg" bg="dark" fixed="top">
           <Container>
             <LinkContainer to="/">
               <Navbar.Brand>CampBuddy</Navbar.Brand>

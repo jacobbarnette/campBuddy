@@ -22,6 +22,10 @@ const campgroundSchema = mongoose.Schema({
     type: String,
     required: [true, "Please add a campground image"],
   },
+  price: {
+    type: String,
+    required: [true, "Please add a campground price"],
+  },
 });
 
 module.exports = mongoose.model("Campground", campgroundSchema);

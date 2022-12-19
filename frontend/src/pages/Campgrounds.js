@@ -26,7 +26,7 @@ const Campgrounds = () => {
       return <CampgroundCard campground={campground} />;
     });
     return (
-      <Container fluid>
+      <Container className="cardContainer" fluid>
         <Row xs="1" md="4">
           {campgrounds.map((campground, i) => (
             <Col>

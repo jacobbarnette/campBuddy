@@ -1,0 +1,1 @@
+DELETE http://localhost:3001/api/campgrounds/6398b53f4a8080ef87a85382

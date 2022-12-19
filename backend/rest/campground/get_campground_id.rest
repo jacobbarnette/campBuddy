@@ -1,1 +1,1 @@
-GET http://localhost:3001/api/campgrounds/6398b53f4a8080ef87a85382
+GET http://localhost:3001/api/campgrounds/6398cfa0861950ce6d332ed7

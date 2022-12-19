@@ -5,6 +5,8 @@ import { toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login, reset } from "../features/auth/authSlice";
+import { Card } from "react-bootstrap";
+import photo from "../assets/imgs/loginPhoto.jpg";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -53,41 +55,50 @@ const Login = () => {
     }
   };
   return (
-    <Form onSubmit={onSubmit} className="form">
-      <Form.Group className="email ">
-        <Form.Label>Email address:</Form.Label>
-        <Form.Control
-          type="text"
-          id="email"
-          name="email"
-          value={email}
-          onChange={onChange}
-          placeholder="enter email"
-        />
-      </Form.Group>
-      <Form.Group className="password ">
-        <Form.Label>Password:</Form.Label>
-        <Form.Control
-          type="text"
-          id="password"
-          name="password"
-          value={password}
-          onChange={onChange}
-          placeholder="enter password"
-        />
-      </Form.Group>
+    <Card className=" loginForm" styles={{ width: "18rem", height: "25rem" }}>
+      <Card.Img
+        variant="top"
+        src={photo}
+        className="loginImg cardImg"
+      ></Card.Img>
+      <Card.Body className="cardBody">
+        <Form onSubmit={onSubmit} className=" ">
+          <Form.Group className="email ">
+            <Form.Label>Email address:</Form.Label>
+            <Form.Control
+              type="text"
+              id="email"
+              name="email"
+              value={email}
+              onChange={onChange}
+              placeholder="enter email"
+            />
+          </Form.Group>
+          <Form.Group className="password ">
+            <Form.Label>Password:</Form.Label>
+            <Form.Control
+              type="text"
+              id="password"
+              name="password"
+              value={password}
+              onChange={onChange}
+              placeholder="enter password"
+            />
+          </Form.Group>
 
-      <br />
-      <Button
-        style={{ width: "100%" }}
-        classname="registerBtn"
-        size="lg"
-        variant="primary"
-        type="submit"
-      >
-        Login
-      </Button>
-    </Form>
+          <br />
+          <Button
+            style={{ width: "100%" }}
+            classname="registerBtn"
+            size="lg"
+            variant="primary"
+            type="submit"
+          >
+            Login
+          </Button>
+        </Form>
+      </Card.Body>
+    </Card>
   );
 };
 

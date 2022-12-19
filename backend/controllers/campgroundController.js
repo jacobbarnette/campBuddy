@@ -1,7 +1,7 @@
+const { response } = require("express");
 const asyncHandler = require("express-async-handler");
 
 const Campground = require("../models/campgroundModel");
-const User = require("../models/userModel");
 
 //get all campgrounds
 const getCampgrounds = asyncHandler(async (req, res) => {
@@ -29,9 +29,49 @@ const postCampground = asyncHandler(async (req, res) => {
     description: req.body.description,
     image: req.body.image,
     user: req.user.id,
+    price: req.body.price,
   });
 
   res.status(200).json(campground);
 });
 
-module.exports = { getCampgrounds, postCampground, getCampgroundById };
+//delete campground
+const deleteCampground = asyncHandler(async (req, res) => {
+  const campground = await Campground.findById(req.params.id);
+
+  if (!campground) {
+    res.status(400);
+    throw new Error("Campground not found");
+  }
+
+  await campground.remove();
+
+  res.status(200).json({ id: req.params.id });
+});
+
+//edit campground
+const editCampground = asyncHandler(async (req, res) => {
+  const { title, location, price, description, image } = req.body;
+
+  Campground.findByIdAndUpdate(
+    req.params.id,
+    {
+      title,
+      location,
+      price,
+      description,
+      image,
+      price,
+    },
+    { new: true, runValidators: true, context: "query" }
+  ).then((updatedCampground) => {
+    res.json(updatedCampground);
+  });
+});
+module.exports = {
+  getCampgrounds,
+  postCampground,
+  getCampgroundById,
+  editCampground,
+  deleteCampground,
+};
