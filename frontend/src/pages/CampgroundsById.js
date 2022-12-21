@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FaTrash, FaPen } from "react-icons/fa";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import {
   deleteCampground,
@@ -19,6 +21,7 @@ import {
   Modal,
   Form,
 } from "react-bootstrap";
+import DeleteConfirmation from "../components/DeleteConfirmation";
 
 const CampgroundsById = () => {
   const [formData, setFormData] = useState({
@@ -32,7 +35,10 @@ const CampgroundsById = () => {
   const { campgrounds } = useSelector((state) => state.campground);
   const { user } = useSelector((state) => state.auth);
   const [show, setShow] = useState(false);
+  const [deleteShow, setDeleteShow] = useState(false);
   const handleClose = () => setShow(false);
+  const handleDeleteClose = () => setDeleteShow(false);
+
   const handleShow = () => {
     setShow(true);
     setFormData({
@@ -43,6 +49,8 @@ const CampgroundsById = () => {
       price: renderedCampground[0].price,
     });
   };
+
+  const handleDeleteShow = () => setDeleteShow(true);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -70,11 +78,8 @@ const CampgroundsById = () => {
     };
 
     dispatch(editCampground({ id, newCampground: formData }));
+    toast.success(`${title} changes saved`);
   };
-
-  //destructure renderedCampground
-  //const { title, description, image, price, location, _id } =
-  //renderedCampground[0];
 
   //check if user added campground, if true render delete/edit btn
   const didUserAddCampground = () => {
@@ -89,8 +94,7 @@ const CampgroundsById = () => {
           <Button
             variant="danger"
             onClick={() => {
-              dispatch(deleteCampground(id));
-              navigate("/Campgrounds");
+              setDeleteShow(true);
             }}
           >
             <FaTrash /> Delete
@@ -188,18 +192,29 @@ const CampgroundsById = () => {
                 />
               </Form.Group>
               <br />
+
+              <Button
+                style={{ width: "100%" }}
+                classname="registerBtn"
+                size="lg"
+                variant="primary"
+                type="submit"
+              >
+                Save Changes
+              </Button>
+
+              <br />
             </Form>
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Cancel
-            </Button>
-            <Button variant="primary" onClick={handleClose}>
-              Save Changes
-            </Button>
-          </Modal.Footer>
         </Modal>
       </>
+      <DeleteConfirmation
+        deleteShow={deleteShow}
+        handleDeleteClose={handleDeleteClose}
+        handleDeleteShow={handleDeleteShow}
+        campground={renderedCampground[0]}
+      />
+      <ToastContainer />
     </Container>
   );
 };

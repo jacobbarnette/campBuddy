@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createCampground } from "../features/campground/campgroundSlice";
@@ -62,6 +62,7 @@ const AddCampground = () => {
 
     dispatch(createCampground(campgroundData));
     resetFormData();
+    toast.success(`${title} added`);
   };
 
   return (
@@ -133,6 +134,7 @@ const AddCampground = () => {
       >
         Add Campground
       </Button>
+      <ToastContainer />
     </Form>
   );
 };
