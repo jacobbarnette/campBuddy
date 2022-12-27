@@ -61,12 +61,15 @@ const AddCampground = () => {
     };
 
     dispatch(createCampground(campgroundData));
-    resetFormData();
     toast.success(`${title} added`);
+    resetFormData();
+
+    navigate("/Campgrounds");
   };
 
   return (
     <Form onSubmit={onSubmit} className="form">
+      <h1 className="text-center">Add Campground</h1>
       <Form.Group className="title">
         <Form.Label>Title:</Form.Label>
         <Form.Control
@@ -116,7 +119,7 @@ const AddCampground = () => {
       <Form.Group className="price">
         <Form.Label>Price:</Form.Label>
         <Form.Control
-          type="text"
+          type="currency"
           id="price"
           name="price"
           value={price}

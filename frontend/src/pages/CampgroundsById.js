@@ -6,11 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { FaTrash, FaPen } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-import {
-  deleteCampground,
-  editCampground,
-} from "../features/campground/campgroundSlice";
+import { FaMapMarker, FaDollarSign } from "react-icons/fa";
+import { editCampground } from "../features/campground/campgroundSlice";
 import {
   Container,
   Card,
@@ -34,6 +31,7 @@ const CampgroundsById = () => {
   const { id } = useParams();
   const { campgrounds } = useSelector((state) => state.campground);
   const { user } = useSelector((state) => state.auth);
+  const [active, setActive] = useState(false);
   const [show, setShow] = useState(false);
   const [deleteShow, setDeleteShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -91,6 +89,7 @@ const CampgroundsById = () => {
           <Button variant="primary" className="editBtn" onClick={handleShow}>
             <FaPen></FaPen> Edit Campground
           </Button>
+
           <Button
             variant="danger"
             onClick={() => {
@@ -111,14 +110,30 @@ const CampgroundsById = () => {
         <Col className="listGrpContainer">
           <ListGroup className="listGrpContainer">
             {campgrounds.map((campground) => {
-              return (
-                <ListGroup.Item
-                  action
-                  onClick={() => navigate(`/Campgrounds/${campground._id}`)}
-                >
-                  {campground.title}
-                </ListGroup.Item>
-              );
+              if (campground._id === id) {
+                return (
+                  <ListGroup.Item
+                    action
+                    className={active ? "active" : null}
+                    onClick={() => {
+                      navigate(`/Campgrounds/${campground._id}`);
+                    }}
+                  >
+                    {campground.title}
+                  </ListGroup.Item>
+                );
+              } else {
+                return (
+                  <ListGroup.Item
+                    action
+                    onClick={() => {
+                      navigate(`/Campgrounds/${campground._id}`);
+                    }}
+                  >
+                    {campground.title}
+                  </ListGroup.Item>
+                );
+              }
             })}
           </ListGroup>
         </Col>
@@ -132,6 +147,12 @@ const CampgroundsById = () => {
             <br />
             <Card.Body className="cardBody individualCard">
               <Card.Title>{renderedCampground[0].title}</Card.Title>
+              <Card.Text className="cardDetails">
+                <FaMapMarker /> {renderedCampground[0].location}
+              </Card.Text>
+              <Card.Text className="cardDetails">
+                <FaDollarSign /> {renderedCampground[0].price}
+              </Card.Text>
               <Card.Text>{renderedCampground[0].description}</Card.Text>
             </Card.Body>
           </Card>

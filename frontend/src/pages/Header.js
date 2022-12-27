@@ -37,13 +37,14 @@ const Header = () => {
                 <LinkContainer to="/Campgrounds">
                   <Nav.Link>Campgrounds</Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="addCampground">
-                  <Nav.Link>New Campground</Nav.Link>
-                </LinkContainer>
               </Nav>
-              <Nav className="ms-auto">
-                {user ? (
-                  <>
+
+              {user ? (
+                <>
+                  <LinkContainer to="addCampground">
+                    <Nav.Link>New Campground</Nav.Link>
+                  </LinkContainer>
+                  <Nav className="ms-auto">
                     <Nav.Link>Signed in as {user.name}</Nav.Link>
                     <LinkContainer to="/">
                       <Nav.Link onClick={onLogout}>
@@ -52,9 +53,11 @@ const Header = () => {
                         Logout
                       </Nav.Link>
                     </LinkContainer>
-                  </>
-                ) : (
-                  <>
+                  </Nav>
+                </>
+              ) : (
+                <>
+                  <Nav className="ms-auto">
                     <LinkContainer to="/login">
                       <Nav.Link>
                         {" "}
@@ -68,9 +71,9 @@ const Header = () => {
                         Register
                       </Nav.Link>
                     </LinkContainer>
-                  </>
-                )}
-              </Nav>
+                  </Nav>
+                </>
+              )}
             </Navbar.Collapse>
           </Container>
           <br />
@@ -91,13 +94,14 @@ const Header = () => {
                 <LinkContainer to="/Campgrounds">
                   <Nav.Link>Campgrounds</Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="addCampground">
-                  <Nav.Link>Add New</Nav.Link>
-                </LinkContainer>
               </Nav>
-              <Nav className="ms-auto">
-                {user ? (
-                  <>
+
+              {user ? (
+                <>
+                  <LinkContainer to="addCampground">
+                    <Nav.Link>New Campground</Nav.Link>
+                  </LinkContainer>
+                  <Nav className="ms-auto">
                     <Nav.Link>Signed in as {user.name}</Nav.Link>
                     <LinkContainer to="/">
                       <Nav.Link onClick={onLogout}>
@@ -106,9 +110,11 @@ const Header = () => {
                         Logout
                       </Nav.Link>
                     </LinkContainer>
-                  </>
-                ) : (
-                  <>
+                  </Nav>
+                </>
+              ) : (
+                <>
+                  <Nav className="ms-auto">
                     <LinkContainer to="/login">
                       <Nav.Link>
                         {" "}
@@ -122,9 +128,9 @@ const Header = () => {
                         Register
                       </Nav.Link>
                     </LinkContainer>
-                  </>
-                )}
-              </Nav>
+                  </Nav>
+                </>
+              )}
             </Navbar.Collapse>
           </Container>
           <br />

@@ -9,10 +9,6 @@ const Campgrounds = () => {
 
   const { campgrounds, status } = useSelector((state) => state.campground);
 
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.auth
-  );
-
   useEffect(() => {
     if (status === "idle") {
       dispatch(getAllCampgrounds());
@@ -22,12 +18,9 @@ const Campgrounds = () => {
   if (status === "looading") {
     return "...loading";
   } else {
-    const campCards = campgrounds.map((campground) => {
-      return <CampgroundCard campground={campground} />;
-    });
     return (
       <Container className="cardContainer" fluid>
-        <Row xs="1" md="4">
+        <Row className="gy-4" xs="1" md="4" styles={{ height: "20px" }}>
           {campgrounds.map((campground, i) => (
             <Col>
               <CampgroundCard campground={campground} />
