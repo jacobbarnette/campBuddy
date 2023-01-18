@@ -11,7 +11,9 @@ const Home = () => {
   console.log(user);
   return (
     <section className="welcome">
-      <p className="welcomeTxt paragraphTxt">Welcome to CampBuddy!</p>
+      <h2 className="welcomeTxt py-4 welcomeHeader paragraphTxt">
+        Welcome to CampBuddy!
+      </h2>
       <p className="welcomeTxt paragraphTxt">
         Jump right in and explore our many campgrounds
       </p>

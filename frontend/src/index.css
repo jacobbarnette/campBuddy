@@ -20,6 +20,7 @@ body {
 
 .navbar-brand, .nav-link{
   color: white !important;
+  font-size: 2rem;
 }
 
 .welcome {
@@ -49,9 +50,13 @@ body {
   text-align: center;
   color: white;
   vertical-align: middle;
-  font-size: 0.8em;
+  font-size: .8em;
 }
 
+.welcomeHeader {
+  font-size: 2em;
+  letter-spacing: 0.05rem;
+}
 .homeLoginBtn {
   margin: 0 auto;
 }
