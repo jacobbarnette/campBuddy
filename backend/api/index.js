@@ -15,9 +15,13 @@ app.use("/api/campgrounds", require("../routes/campRoutes"));
 
 connectDB();
 
+const baseurl = `${window.location.origin}/api`;
+
 app.get("/", (req, res) => {
   res.send("hello");
 });
 app.listen(port, () => {
   console.log(`app is listening on ${port}`);
 });
+
+export default (url, options) => fetch(baseurl + url, options);
