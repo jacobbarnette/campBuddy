@@ -17,6 +17,7 @@ app.use("/api/campgrounds", require("./routes/campRoutes"));
 connectDB();
 
 app.get("/", (req, res) => {
+  res.sendStatus(200);
   res.send("hello");
 });
 app.listen(port, () => {
