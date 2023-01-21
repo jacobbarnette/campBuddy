@@ -1,0 +1,169 @@
+
+.form {
+  margin: 0 auto;
+  width: 50%;
+  margin-top: 5em;
+}
+
+/* landing page styles */
+
+body {
+  background-color: #cccccc; 
+  height: 500px; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+}
+.cardBtn.Btn {
+  font-size: 1vw;
+}
+
+.navbar-brand, .nav-link{
+  color: white !important;
+  font-size: 2rem;
+}
+
+.welcome {
+  font-size: 2em;
+  color: white;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  background-image: url("./assets/imgs/home.jpg");
+  background-color: #cccccc; 
+  height: 500px; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+.welcomeTxt {
+  position: relative;
+  top: 30%;
+  text-align: center;
+  color: white;
+  vertical-align: middle;
+  font-size: .8em;
+}
+
+.welcomeHeader {
+  font-size: 2em;
+  letter-spacing: 0.05rem;
+}
+.homeLoginBtn {
+  margin: 0 auto;
+}
+
+/*camp card styles */
+
+.cardContainer {
+  margin-top: 4em;
+}
+.cardDescription {
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+}
+
+.cardBody.card-body{
+  padding: 0 0 0 0;
+}
+.cardBody {
+  font-size: 100%;
+}
+
+.cardDetails {
+  margin: -.2em;
+  padding-bottom: 0.5em;
+}
+
+.editBtn {
+  margin-right: 1em;
+}
+
+
+.row.row-cols-md-4.row-cols-1{
+  margin-top: 4em;
+}
+.cardTitle.card-title{
+  padding-top: .5em;
+  font-size: 1.5em;
+  text-align: center;
+  font-weight: bold;
+}
+.cardImg {
+  width: 100vw;
+  height: 15vw;
+  object-fit: cover;
+}
+
+.card {
+  border: none!important;
+}
+.cardBtn {
+  width: 100%;
+}
+
+.campCard:hover{
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transform:scale(1.05);
+
+  transition:.3s;
+}
+
+/*card by id */
+
+.cardIdContainer{
+  margin-top: 5em;
+}
+
+.individualImg{
+  width: 100vw;
+  height: 20vw;
+  object-fit: cover;
+}
+
+.card-footer{
+  border-top: none;
+}  
+/*login form*/
+.loginForm {
+  margin: 0 auto;
+  width: 25%;
+  margin-top: 5em;
+}
+
+.loginImg {
+  width: 20vw;
+  height: 20vw;
+  object-fit: cover;
+}
+
+.btnContainer {
+  font-size: 1vw;
+  
+}
+
+
+@media (max-width:575px) {
+  .listGrpContainer {
+      display: none;
+      
+  }
+   .individualImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+   }
+  p.card-text{
+    font-size: 2.5vw;
+  }
+  
+}
