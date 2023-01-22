@@ -1,1 +1,1 @@
-GET http://localhost:3001/api/campgrounds
+GET https://localhost:3001/api/campgrounds
