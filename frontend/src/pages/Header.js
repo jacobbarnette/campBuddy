@@ -38,7 +38,6 @@ const Header = () => {
                   <Nav.Link>Campgrounds</Nav.Link>
                 </LinkContainer>
               </Nav>
-
               {user ? (
                 <>
                   <LinkContainer to="addCampground">
