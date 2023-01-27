@@ -60,11 +60,17 @@ const AddCampground = () => {
       price,
     };
 
-    dispatch(createCampground(campgroundData));
-    toast.success(`${title} added`);
-    resetFormData();
+    console.log(title);
 
-    navigate("/Campgrounds");
+    if (formData.title === "") {
+      console.log("empty");
+      toast.error("Title can not be empty");
+    } else {
+      dispatch(createCampground(campgroundData));
+      toast.success(`${title} added`);
+      resetFormData();
+      navigate("/Campgrounds");
+    }
   };
 
   return (
