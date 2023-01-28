@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://campbuddy.onrender.com/api/campgrounds";
+const BASE_URL = "https://campbuddy.onrender.com/api/campgrounds/";
 
 //get all cammpgrounds by ID
 

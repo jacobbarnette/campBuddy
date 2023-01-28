@@ -62,9 +62,16 @@ const AddCampground = () => {
 
     console.log(title);
 
-    if (formData.title === "") {
-      console.log("empty");
+    if (title === "") {
       toast.error("Title can not be empty");
+    } else if (location === "") {
+      toast.error("Location can not be empty");
+    } else if (description === "") {
+      toast.error("Description can not be empty");
+    } else if (image === "") {
+      toast.error("Image can not be empty");
+    } else if (price === "") {
+      toast.error("Price can not be empty");
     } else {
       dispatch(createCampground(campgroundData));
       toast.success(`${title} added`);

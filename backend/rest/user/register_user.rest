@@ -1,8 +1,8 @@
-POST http://localhost:3001/api/users/
+POST https://campbuddy.onrender.com/api/users/
 content-type: application/json
 
 {
-  "name": "Jake",
-  "email": "jake@email.com",
+  "name": "D",
+  "email": "D@email.com",
   "password": "123456"
 }

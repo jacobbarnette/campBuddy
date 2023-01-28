@@ -66,7 +66,7 @@ const Login = () => {
           <Form.Group className="email ">
             <Form.Label>Email address:</Form.Label>
             <Form.Control
-              type="text"
+              type="e"
               id="email"
               name="email"
               value={email}
@@ -77,7 +77,7 @@ const Login = () => {
           <Form.Group className="password ">
             <Form.Label>Password:</Form.Label>
             <Form.Control
-              type="text"
+              type="password"
               id="password"
               name="password"
               value={password}
