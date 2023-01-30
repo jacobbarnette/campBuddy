@@ -1,14 +1,11 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
-import {
-  deleteCampground,
-  editCampground,
-} from "../features/campground/campgroundSlice";
+import { deleteCampground } from "../features/campground/campgroundSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 const DeleteConfirmation = ({
   deleteShow,
-  handleDeleteShow,
+
   handleDeleteClose,
   campground,
   handleClose,
@@ -16,7 +13,6 @@ const DeleteConfirmation = ({
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  console.log(handleDeleteShow, deleteShow, campground);
   return (
     <Modal show={deleteShow} onHide={handleDeleteClose}>
       <Modal.Header closeButton>

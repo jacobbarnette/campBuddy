@@ -151,20 +151,3 @@ body {
   font-size: 1vw;
   
 }
-
-
-@media (max-width:1200px) {
-  .listGrpContainer {
-      display: none;
-      
-  }
-   .individualImg {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-   }
-  p.card-text{
-    font-size: 2.5vw;
-  }
-  
-}

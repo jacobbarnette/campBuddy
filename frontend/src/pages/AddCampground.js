@@ -5,6 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createCampground } from "../features/campground/campgroundSlice";
+
 const AddCampground = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ const AddCampground = () => {
   //destrucute state object
   const { title, location, description, image, price } = formData;
 
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
+  const { user, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   );
 
