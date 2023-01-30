@@ -44,6 +44,9 @@ const Login = () => {
   //form submit
   const onSubmit = (e) => {
     e.preventDefault();
+    if (!email) {
+      toast.error(`Email is incorrect`);
+    }
     if (!password) {
       toast.error(`Password is incorrect`);
     } else {

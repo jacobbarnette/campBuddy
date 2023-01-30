@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { register, reset } from "../features/auth/authSlice";
@@ -44,6 +44,11 @@ const Register = () => {
   //form submit
   const onSubmit = (e) => {
     e.preventDefault();
+    if (name === "") {
+      toast.error("Name can not be empty");
+    } else if ((email = "")) {
+      toast.error("Email can not be empty ");
+    }
     if (password !== password2) {
       toast.error(`Passwords do not match`);
     } else {
@@ -71,7 +76,7 @@ const Register = () => {
       <Form.Group className="email ">
         <Form.Label>Email address:</Form.Label>
         <Form.Control
-          type="text"
+          type="email"
           id="email"
           name="email"
           value={email}
@@ -82,7 +87,7 @@ const Register = () => {
       <Form.Group className="password ">
         <Form.Label>Password:</Form.Label>
         <Form.Control
-          type="text"
+          type="password"
           id="password"
           name="password"
           value={password}
@@ -93,7 +98,7 @@ const Register = () => {
       <Form.Group className="password ">
         <Form.Label> Confirm Password:</Form.Label>
         <Form.Control
-          type="text"
+          type="password"
           id="password2"
           name="password2"
           value={password2}
@@ -111,6 +116,7 @@ const Register = () => {
       >
         Register
       </Button>
+      <ToastContainer />
     </Form>
   );
 };
