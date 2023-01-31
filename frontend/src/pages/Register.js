@@ -46,7 +46,8 @@ const Register = () => {
     e.preventDefault();
     if (name === "") {
       toast.error("Name can not be empty");
-    } else if ((email = "")) {
+    }
+    if (email === "") {
       toast.error("Email can not be empty ");
     }
     if (password !== password2) {
@@ -57,6 +58,7 @@ const Register = () => {
         email,
         password,
       };
+      toast.success(`${name} has been registered!`);
       dispatch(register(userData));
     }
   };
