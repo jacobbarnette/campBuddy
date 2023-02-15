@@ -151,3 +151,9 @@ body {
   font-size: 1vw;
   
 }
+.spinnerDiv {
+  display: flex;
+   align-Items: center;
+   justify-content: center;
+   height: 100vh ;
+}

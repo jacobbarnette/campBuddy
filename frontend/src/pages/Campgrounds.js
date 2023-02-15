@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import CampgroundCard from "../components/CampgroundCard";
 import { getAllCampgrounds } from "../features/campground/campgroundSlice";
@@ -15,8 +15,17 @@ const Campgrounds = () => {
     }
   }, [status, dispatch]);
 
-  if (status === "looading") {
-    return "...loading";
+  if (status === "looading" || status === "idle") {
+    return (
+      <div className="spinnerDiv">
+        <Spinner
+          style={{ width: "4rem", height: "4rem" }}
+          className="spinner"
+          size="xxl"
+          animation="border"
+        ></Spinner>
+      </div>
+    );
   } else {
     return (
       <Container className="cardContainer" fluid>
