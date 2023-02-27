@@ -1,2 +1,2 @@
-GET  http://localhost:3001/api/users/me5
+GET  http://localhost:3001/api/users/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOTUwMTk0ZTYyOTI5NWJhMWNkZTYyOSIsImlhdCI6MTY3MDcxMDc2OCwiZXhwIjoxNjczMzAyNzY4fQ.BfRRUnrD50_lPeC6CrxarEc_TBNvWMUaqNhvOYD7heA

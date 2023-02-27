@@ -15,7 +15,7 @@ const Campgrounds = () => {
     }
   }, [status, dispatch]);
 
-  if (status === "looading" || status === "idle") {
+  if (status === "loading" || status === "idle") {
     return (
       <div className="spinnerDiv">
         <Spinner

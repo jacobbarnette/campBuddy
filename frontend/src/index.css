@@ -157,3 +157,10 @@ body {
    justify-content: center;
    height: 100vh ;
 }
+
+.spinnerDiv {
+  display: flex;
+  align-Items: center;
+  justify-content: center;
+  height: 100vh ;
+}
