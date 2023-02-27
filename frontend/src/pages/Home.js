@@ -16,7 +16,7 @@ const Home = () => {
     }
   }, [status, dispatch]);
 
-  if (status === "looading") {
+  if (status === "loading") {
     return "...loading";
   } else {
     return (
@@ -24,10 +24,10 @@ const Home = () => {
         <h2 className="welcomeTxt py-4 welcomeHeader paragraphTxt">
           Welcome to CampBuddy!
         </h2>
-        <p className="welcomeTxt paragraphTxt">
+        <p className="welcomeTxt px-4 paragraphTxt">
           Jump right in and explore our many campgrounds
         </p>
-        <p className="welcomeTxt paragraphTxt">
+        <p className="welcomeTxt px-4 paragraphTxt">
           Feel free to share some of your own and comment on others!
         </p>
       </section>

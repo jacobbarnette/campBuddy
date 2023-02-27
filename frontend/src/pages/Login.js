@@ -58,16 +58,12 @@ const Login = () => {
     }
   };
   return (
-    <Card className=" loginForm" styles={{ width: "18rem", height: "25rem" }}>
-      <Card.Img
-        variant="top"
-        src={photo}
-        className="loginImg cardImg"
-      ></Card.Img>
+    <Card className="loginForm" styles={{ width: "18rem", height: "25rem" }}>
+      <Card.Img variant="top" src={photo} className="py-2 loginImg"></Card.Img>
       <Card.Body className="cardBody">
         <Form onSubmit={onSubmit} className=" ">
-          <Form.Group className="email ">
-            <Form.Label>Email address:</Form.Label>
+          <Form.Group className="email py-2">
+            <Form.Label>Email:</Form.Label>
             <Form.Control
               type="e"
               id="email"
@@ -77,7 +73,7 @@ const Login = () => {
               placeholder="enter email"
             />
           </Form.Group>
-          <Form.Group className="password ">
+          <Form.Group className="password py-2 ">
             <Form.Label>Password:</Form.Label>
             <Form.Control
               type="password"

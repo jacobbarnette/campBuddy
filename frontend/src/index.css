@@ -1,4 +1,6 @@
-
+.root {
+  height: 100vh;
+}
 .form {
   margin: 0 auto;
   width: 50%;
@@ -26,7 +28,7 @@ body {
 .welcome {
   font-size: 2em;
   color: white;
-  height: 100%;
+  width: 80%;
   position: fixed;
   left: 0;
   min-width: 100%;
@@ -76,9 +78,7 @@ body {
 .cardBody.card-body{
   padding: 0 0 0 0;
 }
-.cardBody {
-  font-size: 100%;
-}
+
 
 .cardDetails {
   margin: -.2em;
@@ -111,6 +111,9 @@ body {
 .cardBtn {
   width: 100%;
 }
+.cardbody {
+  width: 100%;
+}
 
 .campCard:hover{
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -141,11 +144,7 @@ body {
   margin-top: 5em;
 }
 
-.loginImg {
-  width: 20vw;
-  height: 20vw;
-  object-fit: cover;
-}
+
 
 .btnContainer {
   font-size: 1vw;
@@ -158,9 +157,14 @@ body {
    height: 100vh ;
 }
 
-.spinnerDiv {
-  display: flex;
-  align-Items: center;
-  justify-content: center;
-  height: 100vh ;
+@media only screen and (max-width: 1024px) {
+  .welcome {
+    font-size: 1.5em;
+  }
+  .loginForm {
+    width: 80%;
+  }
+  .loginImg {
+  }
+
 }
