@@ -111,9 +111,7 @@ body {
 .cardBtn {
   width: 100%;
 }
-.cardbody {
-  width: 100%;
-}
+
 
 .campCard:hover{
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -140,21 +138,24 @@ body {
 /*login form*/
 .loginForm {
   margin: 0 auto;
-  width: 25%;
+  width: 30%;
   margin-top: 5em;
+  font-weight: bold;
 }
 
-
-
-.btnContainer {
-  font-size: 1vw;
-  
+.loginImg {
+  object-fit: contain; 
 }
+
 .spinnerDiv {
   display: flex;
-   align-Items: center;
-   justify-content: center;
-   height: 100vh ;
+  align-Items: center;
+  justify-content: center;
+  height: 100vh ;
+}
+
+.registerBtn{
+  background-color: #212529 !important;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -164,7 +165,5 @@ body {
   .loginForm {
     width: 80%;
   }
-  .loginImg {
-  }
-
+  
 }

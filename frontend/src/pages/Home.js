@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { Spinner } from "react-bootstrap";
 import { getAllCampgrounds } from "../features/campground/campgroundSlice";
 const Home = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,16 @@ const Home = () => {
   }, [status, dispatch]);
 
   if (status === "loading") {
-    return "...loading";
+    return (
+      <div className="spinnerDiv">
+        <Spinner
+          style={{ width: "4rem", height: "4rem" }}
+          className="spinner"
+          size="xxl"
+          animation="border"
+        ></Spinner>
+      </div>
+    );
   } else {
     return (
       <section className="welcome">

@@ -58,7 +58,7 @@ const Login = () => {
     }
   };
   return (
-    <Card className="loginForm" styles={{ width: "18rem", height: "25rem" }}>
+    <Card className="loginForm">
       <Card.Img variant="top" src={photo} className="py-2 loginImg"></Card.Img>
       <Card.Body className="cardBody">
         <Form onSubmit={onSubmit} className=" ">
@@ -87,8 +87,11 @@ const Login = () => {
 
           <br />
           <Button
-            style={{ width: "100%" }}
-            classname="registerBtn"
+            style={{
+              width: "100%",
+              backgroundColor: "#212529",
+              border: "none",
+            }}
             size="lg"
             variant="primary"
             type="submit"

@@ -63,8 +63,8 @@ const Register = () => {
     }
   };
   return (
-    <Form onSubmit={onSubmit} className="form">
-      <Form.Group className="name ">
+    <Form onSubmit={onSubmit} className="loginForm py-2">
+      <Form.Group className="name py-2">
         <Form.Label>Name:</Form.Label>
         <Form.Control
           type="text"
@@ -75,7 +75,7 @@ const Register = () => {
           placeholder="enter name"
         />
       </Form.Group>
-      <Form.Group className="email ">
+      <Form.Group className="email py-2">
         <Form.Label>Email address:</Form.Label>
         <Form.Control
           type="email"
@@ -86,7 +86,7 @@ const Register = () => {
           placeholder="enter email"
         />
       </Form.Group>
-      <Form.Group className="password ">
+      <Form.Group className="password py-2">
         <Form.Label>Password:</Form.Label>
         <Form.Control
           type="password"
@@ -97,7 +97,7 @@ const Register = () => {
           placeholder="enter password"
         />
       </Form.Group>
-      <Form.Group className="password ">
+      <Form.Group className="password py-2">
         <Form.Label> Confirm Password:</Form.Label>
         <Form.Control
           type="password"
@@ -110,8 +110,7 @@ const Register = () => {
       </Form.Group>
       <br />
       <Button
-        style={{ width: "100%" }}
-        classname="registerBtn"
+        style={{ width: "100%", backgroundColor: "#212529", border: "none" }}
         size="lg"
         variant="primary"
         type="submit"
