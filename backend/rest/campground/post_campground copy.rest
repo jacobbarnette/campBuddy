@@ -3,7 +3,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOTUwMTk0ZTYyOTI5NWJhMWNkZTYyOSIsImlhdCI6MTY3MDcxMDc2OCwiZXhwIjoxNjczMzAyNzY4fQ.BfRRUnrD50_lPeC6CrxarEc_TBNvWMUaqNhvOYD7heA
 
 {
-  "title": "Brown County State Park",
+  "title": "Brown County555 State Park",
   "location": "Brown County, Indiana",
   "description": "Located in Southern Indiana",
   "image": "N/A"

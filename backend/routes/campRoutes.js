@@ -9,9 +9,12 @@ const {
   editCampground,
 } = require("../controllers/campgroundController");
 
+const { postComment } = require("../controllers/commentController");
+
 router.get("/", getCampgrounds);
 router.get("/:id", getCampgroundById);
 router.post("/", protect, postCampground);
+router.post("/:id/comments", protect, postComment);
 router.put("/:id", editCampground);
 router.delete("/:id", deleteCampground);
 

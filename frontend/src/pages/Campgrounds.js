@@ -29,7 +29,13 @@ const Campgrounds = () => {
   } else {
     return (
       <Container className="cardContainer" fluid>
-        <Row className="gy-4" xs="1" sm="1" xxl="4" styles={{ height: "20px" }}>
+        <Row
+          className="gy-4 px-5 py-3"
+          xs="1"
+          sm="1"
+          xxl="4"
+          styles={{ height: "20px" }}
+        >
           {campgrounds.map((campground, i) => (
             <Col>
               <CampgroundCard campground={campground} />

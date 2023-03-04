@@ -71,7 +71,7 @@ body {
 }
 .cardDescription {
   text-overflow: ellipsis;
-  overflow: hidden;
+ 
 
 }
 
@@ -154,9 +154,6 @@ body {
   height: 100vh ;
 }
 
-.registerBtn{
-  background-color: #212529 !important;
-}
 
 @media only screen and (max-width: 1024px) {
   .welcome {

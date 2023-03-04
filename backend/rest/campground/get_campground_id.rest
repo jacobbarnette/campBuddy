@@ -1,1 +1,10 @@
-GET http://localhost:3001/api/campgrounds/6398cfa0861950ce6d332ed7
+POST http://localhost:3001/api/campgrounds/63a3575b483adecb596347ff/comments
+
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MDM5NDhmNThkMjhhNTNmMDYyMGMwNyIsImlhdCI6MTY3Nzk1NjI0MCwiZXhwIjoxNjgwNTQ4MjQwfQ.ME6l9RqKGvSfjOZNE0h_xVxZk5egXAceSoJgGD1Ch4c
+
+
+{
+  "text": "Brown County State Park",
+  
+}
