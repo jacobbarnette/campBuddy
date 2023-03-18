@@ -8,6 +8,8 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaMapMarker, FaDollarSign } from "react-icons/fa";
 import { editCampground } from "../features/campground/campgroundSlice";
+import { FaUser } from "react-icons/fa";
+import { BsFillChatDotsFill } from "react-icons/bs";
 import {
   Container,
   Card,
@@ -31,6 +33,7 @@ const CampgroundsById = () => {
   const { id } = useParams();
   const { campgrounds } = useSelector((state) => state.campground);
   const { user } = useSelector((state) => state.auth);
+  const { users } = useSelector((state) => state.auth);
   const [active, setActive] = useState(false);
   const [show, setShow] = useState(false);
   const [deleteShow, setDeleteShow] = useState(false);
@@ -153,10 +156,41 @@ const CampgroundsById = () => {
               <Card.Text className="cardDetails">
                 <FaDollarSign /> {renderedCampground[0].price}
               </Card.Text>
-              <Card.Text>{renderedCampground[0].description}</Card.Text>
+              <Card.Text className="">
+                {renderedCampground[0].description}
+              </Card.Text>
             </Card.Body>
           </Card>
           {didUserAddCampground()}
+          <br />
+          <div className="mt-3 ">
+            {renderedCampground[0].comments.map((comment, i) => {
+              const commentedUser = users.find(
+                (user) => user._id === comment.user
+              );
+
+              return (
+                <div className="comment">
+                  <div className=" py-2 comment-header">
+                    <p className="commentSubmitter">
+                      <FaUser /> {commentedUser.name}
+                    </p>
+                    <p className="text-muted commentDate">
+                      {new Date(comment.createdAt).toLocaleDateString()}
+                    </p>
+                  </div>
+                  <div className="comment-body">
+                    <p>{comment.text}</p>
+                  </div>
+                  <hr></hr>
+                </div>
+              );
+            })}
+            <Button className="px-3 reviewBtn">
+              {" "}
+              <BsFillChatDotsFill /> Leave A Review
+            </Button>
+          </div>
         </Col>
       </Row>
       <>

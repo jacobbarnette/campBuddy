@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Spinner } from "react-bootstrap";
 import { getAllCampgrounds } from "../features/campground/campgroundSlice";
+import { getAllUsers } from "../features/auth/authSlice";
+
 const Home = () => {
   const dispatch = useDispatch();
 
@@ -15,6 +17,12 @@ const Home = () => {
       dispatch(getAllCampgrounds());
     }
   }, [status, dispatch]);
+
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(getAllUsers());
+    }
+  });
 
   if (status === "loading") {
     return (

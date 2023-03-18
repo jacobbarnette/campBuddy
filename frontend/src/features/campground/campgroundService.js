@@ -2,6 +2,8 @@ import axios from "axios";
 
 const BASE_URL = "https://campbuddy.onrender.com/api/campgrounds/";
 
+// get all
+
 //get all cammpgrounds by ID
 
 const getCampgroundById = async (id) => {

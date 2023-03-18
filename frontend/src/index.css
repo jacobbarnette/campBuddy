@@ -16,9 +16,6 @@ body {
   background-repeat: no-repeat; 
   background-size: cover; 
 }
-.cardBtn.Btn {
-  font-size: 1vw;
-}
 
 .navbar-brand, .nav-link{
   color: white !important;
@@ -71,10 +68,12 @@ body {
 }
 .cardDescription {
   text-overflow: ellipsis;
- 
 
 }
 
+p{
+  font-size: 1em;
+}
 .cardBody.card-body{
   padding: 0 0 0 0;
 }
@@ -127,14 +126,43 @@ body {
 }
 
 .individualImg{
-  width: 100vw;
-  height: 20vw;
-  object-fit: cover;
+
+  object-fit: contain;
 }
 
 .card-footer{
   border-top: none;
 }  
+
+.commentContainer {
+  border: 1px solid rgba(0, 0, 111, 0.1)
+}
+
+hr{
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ 
+}
+.reviewBtn {
+  position: absolute;
+  right: 0;
+}
+
+.commentDate{
+  font-weight: bold;
+}
+
+.commentSubmitter{
+  font-size: 1.2em;
+  font-weight: bold;
+}
 /*login form*/
 .loginForm {
   margin: 0 auto;

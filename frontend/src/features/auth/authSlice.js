@@ -1,7 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 import authService from "./authService";
 
 const user = JSON.parse(localStorage.getItem("user"));
+const BASE_URL = "http://localhost:3001/api/users";
 
 const initialState = {
   user: user ? user : null,
@@ -9,7 +11,14 @@ const initialState = {
   isError: false,
   isSucess: false,
   message: "",
+  users: [],
+  usersPopulated: false,
 };
+
+export const getAllUsers = createAsyncThunk("users/getalluseres", async () => {
+  const response = await axios.get(BASE_URL);
+  return response.data;
+});
 
 export const register = createAsyncThunk(
   "auth/register",
@@ -70,6 +79,14 @@ export const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.user = null;
+      })
+      .addCase(getAllUsers.pending, (state) => {
+        state.usersPopulated = false;
+      })
+      .addCase(getAllUsers.fulfilled, (state, action) => {
+        state.status = true;
+        console.log(action.payload);
+        state.users = state.users.concat(action.payload);
       })
       .addCase(login.pending, (state) => {
         state.isLoading = true;

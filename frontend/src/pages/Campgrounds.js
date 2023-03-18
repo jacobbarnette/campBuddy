@@ -32,7 +32,7 @@ const Campgrounds = () => {
         <Row
           className="gy-4 px-5 py-3"
           xs="1"
-          sm="1"
+          lg="3"
           xxl="4"
           styles={{ height: "20px" }}
         >
