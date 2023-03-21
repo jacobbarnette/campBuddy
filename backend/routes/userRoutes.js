@@ -4,10 +4,13 @@ const {
   registerUser,
   loginUser,
   getMe,
+  getAllUsers,
 } = require("../controllers/userController");
 const { protect } = require("../middleware/authMiddleware");
 //register user
 router.post("/", registerUser);
+//get all users
+router.get("/", getAllUsers);
 //login user
 router.post("/login", loginUser);
 //get user info

@@ -2,7 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import campgroundService from "./campgroundService";
 
-const BASE_URL = "https://campbuddy.onrender.com/api/campgrounds";
+//changed from https://campbuddy.onrender.com/api/campgrounds
+const BASE_URL = "http://localhost:3001/api/campgrounds/";
 const initialState = {
   campgrounds: [],
   status: "idle",
@@ -18,6 +19,28 @@ export const getAllCampgrounds = createAsyncThunk(
     const response = await axios.get(BASE_URL);
 
     return response.data;
+  }
+);
+
+export const postComment = createAsyncThunk(
+  "camp/postComment",
+
+  async ({ id, comment }, thunkAPI) => {
+    console.log(id, comment);
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+
+      return await campgroundService.createComment({ id, token, comment });
+    } catch (error) {
+      console.log(error);
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
   }
 );
 
@@ -106,6 +129,20 @@ export const campgroundSlice = createSlice({
         state.campgrounds.push(action.payload);
       })
       .addCase(createCampground.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(postComment.pending, (state) => {
+        state.status = "loading";
+        console.log(state.campgrounds);
+      })
+      .addCase(postComment.fulfilled, (state, action) => {
+        state.status = "success";
+        console.log(state.campgrounds, action.payload);
+        state.campgrounds.push(action.payload);
+      })
+      .addCase(postComment.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

@@ -7,7 +7,10 @@ import { FaTrash, FaPen } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaMapMarker, FaDollarSign } from "react-icons/fa";
-import { editCampground } from "../features/campground/campgroundSlice";
+import {
+  editCampground,
+  postComment,
+} from "../features/campground/campgroundSlice";
 import { FaUser } from "react-icons/fa";
 import { BsFillChatDotsFill } from "react-icons/bs";
 import {
@@ -23,6 +26,7 @@ import {
 import DeleteConfirmation from "../components/DeleteConfirmation";
 
 const CampgroundsById = () => {
+  const [comment, setComment] = useState("");
   const [formData, setFormData] = useState({
     title: "",
     location: "",
@@ -31,15 +35,20 @@ const CampgroundsById = () => {
     price: "",
   });
   const { id } = useParams();
+
   const { campgrounds } = useSelector((state) => state.campground);
   const { user } = useSelector((state) => state.auth);
   const { users } = useSelector((state) => state.auth);
   const [active, setActive] = useState(false);
+  const [open, setOpen] = useState(false);
   const [show, setShow] = useState(false);
   const [deleteShow, setDeleteShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleDeleteClose = () => setDeleteShow(false);
 
+  const handleOpen = () => {
+    setOpen(!open);
+  };
   const handleShow = () => {
     setShow(true);
     setFormData({
@@ -80,6 +89,12 @@ const CampgroundsById = () => {
 
     dispatch(editCampground({ id, newCampground: formData }));
     toast.success(`${title} changes saved`);
+  };
+
+  const addComment = (e) => {
+    e.preventDefault();
+
+    dispatch(postComment({ id, comment }));
   };
 
   //check if user added campground, if true render delete/edit btn
@@ -180,13 +195,13 @@ const CampgroundsById = () => {
                     </p>
                   </div>
                   <div className="comment-body">
-                    <p>{comment.text}</p>
+                    <p>{comment.comment}</p>
                   </div>
                   <hr></hr>
                 </div>
               );
             })}
-            <Button className="px-3 reviewBtn">
+            <Button onClick={() => handleOpen()} className="px-3 reviewBtn">
               {" "}
               <BsFillChatDotsFill /> Leave A Review
             </Button>
@@ -194,6 +209,30 @@ const CampgroundsById = () => {
         </Col>
       </Row>
       <>
+        <Modal show={open} onHide={handleOpen}>
+          {" "}
+          <Modal.Header closeButton>
+            <Modal.Title>Leave A Review</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form onSubmit={addComment}>
+              <Form.Group className="description ">
+                <Form.Label>Review:</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={4}
+                  type="text"
+                  id="comment"
+                  value={comment}
+                  name="comment"
+                  onChange={(e) => setComment(e.target.value)}
+                  placeholder="enter review"
+                />
+              </Form.Group>
+              <Button type="submit">Submit</Button>
+            </Form>
+          </Modal.Body>
+        </Modal>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Edit {renderedCampground[0].title}</Modal.Title>
@@ -222,7 +261,7 @@ const CampgroundsById = () => {
                   placeholder="enter location"
                 />
               </Form.Group>
-              <Form.Group className="description ">
+              <Form.Group className="comment ">
                 <Form.Label>Description:</Form.Label>
                 <Form.Control
                   as="textarea"

@@ -151,8 +151,7 @@ hr{
  
 }
 .reviewBtn {
-  position: absolute;
-  right: 0;
+  float: right;
 }
 
 .commentDate{

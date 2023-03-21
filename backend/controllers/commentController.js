@@ -6,32 +6,24 @@ const Campground = require("../models/campgroundModel");
 const postComment = asyncHandler(async (req, res) => {
   try {
     const campground = await Campground.findById(req.params.id);
+
+    console.log(
+      `this is from com ment controller babbbbbyyy`,
+      req.body.comment
+    );
     const comment = {
       user: req.user._id,
-      text: req.body.comment,
+      comment: req.body.comment,
     };
-    campground.comments.push(comment);
-    await campground.save();
-    res.status(201).send({ message: "Comment added" });
-  } catch (error) {
-    console.error(err);
-    res.status(500).send({ message: "server error" });
-  }
-});
+    console.log(comment);
 
-router.post("/:id/comments", async (req, res) => {
-  try {
-    const campground = await Campground.findById(req.params.id);
-    const comment = {
-      user: req.user._id, // assuming you have user authentication in place
-      text: req.body.comment,
-    };
     campground.comments.push(comment);
+
     await campground.save();
-    res.status(201).send({ message: "Comment added" });
+    res.status(200).json(comment);
   } catch (err) {
     console.error(err);
-    res.status(500).send({ message: "Server error" });
+    res.status(500).send({ message: "server error" });
   }
 });
 

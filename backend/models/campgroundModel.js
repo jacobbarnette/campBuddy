@@ -6,9 +6,14 @@ const commentSchema = mongoose.Schema({
     required: true,
     ref: "User",
   },
-  text: {
+  rating: {
+    type: Number,
+
+    min: 1,
+    max: 5,
+  },
+  comment: {
     type: String,
-    required: [true, "Please add a comment"],
   },
   createdAt: {
     type: Date,

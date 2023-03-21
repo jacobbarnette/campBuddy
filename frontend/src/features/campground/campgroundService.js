@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "https://campbuddy.onrender.com/api/campgrounds/";
+//changed from https://campbuddy.onrender.com/api/campgrounds
+const BASE_URL = "http://localhost:3001/api/campgrounds/";
 
 // get all
 
@@ -19,6 +20,26 @@ const createCampground = async (campgroundData, token) => {
     },
   };
   const response = await axios.post(BASE_URL, campgroundData, config);
+
+  return response.data;
+};
+
+const createComment = async ({ id, token, comment }) => {
+  console.log(`called from service`, id, `token:`, token, comment);
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const newComment = {
+    comment: comment,
+  };
+
+  const response = await axios.post(
+    `${BASE_URL}${id}/comments`,
+    newComment,
+    config
+  );
 
   return response.data;
 };
@@ -51,6 +72,7 @@ const campgroundService = {
   getCampgroundById,
   deleteCampground,
   editCampground,
+  createComment,
 };
 
 export default campgroundService;

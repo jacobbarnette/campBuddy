@@ -1,10 +1,10 @@
 POST http://localhost:3001/api/campgrounds/63a3575b483adecb596347ff/comments
 
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MDM5NDhmNThkMjhhNTNmMDYyMGMwNyIsImlhdCI6MTY3Nzk1NjI0MCwiZXhwIjoxNjgwNTQ4MjQwfQ.ME6l9RqKGvSfjOZNE0h_xVxZk5egXAceSoJgGD1Ch4c
+
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MDM5NjkyNThkMjhhNTNmMDYyMGMxMCIsImlhdCI6MTY3Nzk1Njc1NCwiZXhwIjoxNjgwNTQ4NzU0fQ.aRaqj9VPIMXyZQNCH4XSagB7ygdWiQ6AR4vhSCRBHAA
 
 
 {
-  "text": "Brown County State Park",
+  "comment": "Brown County State Park",
   
 }
