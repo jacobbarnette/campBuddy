@@ -144,7 +144,7 @@ const AddCampground = () => {
       <br />
       <Button
         style={{ width: "100%" }}
-        classname="registerBtn"
+        className="registerBtn"
         size="lg"
         variant="primary"
         type="submit"

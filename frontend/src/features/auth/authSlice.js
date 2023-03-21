@@ -85,7 +85,7 @@ export const authSlice = createSlice({
       })
       .addCase(getAllUsers.fulfilled, (state, action) => {
         state.status = true;
-        console.log(action.payload);
+
         state.users = state.users.concat(action.payload);
       })
       .addCase(login.pending, (state) => {
