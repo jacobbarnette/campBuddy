@@ -92,7 +92,7 @@ export const editCampground = createAsyncThunk(
     const { title, location, description, image, price } = newCampground;
     try {
       console.log(`try statement is running`);
-      const token = thunkAPI.getState().auth.user.token;
+
       return await campgroundService.editCampground(id, {
         title,
         location,
