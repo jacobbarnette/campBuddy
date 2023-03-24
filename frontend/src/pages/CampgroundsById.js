@@ -110,11 +110,9 @@ const CampgroundsById = () => {
       return (
         <div className="btnContainer">
           <br />
-          <Button
-            variant="primary"
-            className="editBtn"
-            onClick={handleShow}
-          ></Button>
+          <Button variant="primary" className="editBtn" onClick={handleShow}>
+            <FaPen /> Edit Campground
+          </Button>
 
           <Button
             variant="danger"
