@@ -4,8 +4,6 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { format, compareAsc } from "date-fns";
-
 import { Spinner } from "react-bootstrap";
 import { getAllCampgrounds } from "../features/campground/campgroundSlice";
 import { getAllUsers } from "../features/auth/authSlice";
@@ -43,9 +41,7 @@ const CampgroundsById = () => {
   const { id } = useParams();
 
   const { campgrounds, status } = useSelector((state) => state.campground);
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.auth
-  );
+  const { user } = useSelector((state) => state.auth);
   const { users } = useSelector((state) => state.auth);
   const [active, setActive] = useState(false);
   const [open, setOpen] = useState(false);
@@ -53,9 +49,6 @@ const CampgroundsById = () => {
   const [deleteShow, setDeleteShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleDeleteClose = () => setDeleteShow(false);
-  const date = () => {
-    return format(new Date.now(), "MM/dd/yyyy");
-  };
   const handleOpen = () => {
     setOpen(!open);
   };
@@ -87,28 +80,18 @@ const CampgroundsById = () => {
   const { title, location, description, image, price } = formData;
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
-    const newCampground = {
-      id,
-      title,
-      location,
-      price,
-      description,
-      image,
-    };
 
     dispatch(editCampground({ id, newCampground: formData }));
     toast.success(`${title} changes saved`);
   };
 
-  const resetCommentDate = () => {
-    setComment("");
-  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(`iambengcalled`, e);
-    dispatch(postComment({ id, comment }));
-    toast.success("comment added");
+    if (user === null) {
+      toast.error("Please sign in or register");
+    } else {
+      dispatch(postComment({ id, comment }));
+    }
   };
 
   //check if user added campground, if true render delete/edit btn
