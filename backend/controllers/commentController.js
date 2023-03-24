@@ -4,7 +4,6 @@ const asyncHandler = require("express-async-handler");
 const Campground = require("../models/campgroundModel");
 
 const postComment = asyncHandler(async (req, res) => {
-  console.log(req.body);
   if (!req.body.comment) {
     res.status(400);
     throw new Error("Please add a comment");
