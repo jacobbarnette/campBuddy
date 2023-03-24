@@ -38,7 +38,7 @@ const Campgrounds = () => {
         >
           {campgrounds.map((campground, i) => (
             <Col>
-              <CampgroundCard key={i} campground={campground} />
+              <CampgroundCard key={campground.id} campground={campground} />
             </Col>
           ))}
         </Row>

@@ -26,7 +26,7 @@ const CampgroundCard = ({ campground }) => {
             <FaDollarSign /> {campground.price}
           </Card.Text>
           <Card.Text style={{ height: "5em" }} className=" cardDescription">
-            <p classname="cardText py-5">
+            <p className="cardText ">
               {campground.description.substring(0, 150)}...
             </p>
           </Card.Text>

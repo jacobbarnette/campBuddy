@@ -2,8 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import campgroundService from "./campgroundService";
 
-//changed from https://campbuddy.onrender.com/api/campgrounds
-const BASE_URL = "http://localhost:3001/api/campgrounds/";
+const BASE_URL = "https://campbuddy.onrender.com/api/campgrounds";
 const initialState = {
   campgrounds: [],
   status: "idle",
@@ -25,8 +24,7 @@ export const getAllCampgrounds = createAsyncThunk(
 export const postComment = createAsyncThunk(
   "camp/postComment",
 
-  async ({ id, comment }, thunkAPI) => {
-    console.log(id, comment);
+  async ({ id, comment, campgroundID }, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
 
@@ -91,8 +89,6 @@ export const editCampground = createAsyncThunk(
   async ({ id, newCampground }, thunkAPI) => {
     const { title, location, description, image, price } = newCampground;
     try {
-      console.log(`try statement is running`);
-
       return await campgroundService.editCampground(id, {
         title,
         location,
@@ -135,12 +131,17 @@ export const campgroundSlice = createSlice({
       })
       .addCase(postComment.pending, (state) => {
         state.status = "loading";
-        console.log(state.campgrounds);
       })
       .addCase(postComment.fulfilled, (state, action) => {
         state.status = "success";
-        console.log(state.campgrounds, action.payload);
-        state.campgrounds.push(action.payload);
+        const { user, comment, _id, createdAt } = action.payload;
+
+        const existingCampground = state.campgrounds.find(
+          (campground) => campground._id === _id
+        );
+        if (existingCampground) {
+          existingCampground.comments.push({ comment, user, createdAt });
+        }
       })
       .addCase(postComment.rejected, (state, action) => {
         state.isLoading = false;
@@ -183,7 +184,7 @@ export const campgroundSlice = createSlice({
         state.isSuccess = true;
         const { title, _id, location, description, image, price } =
           action.payload;
-        console.log(title, _id, location, description, image, price);
+
         const existingCampground = state.campgrounds.find(
           (campground) => campground._id === _id
         );
@@ -198,7 +199,7 @@ export const campgroundSlice = createSlice({
       .addCase(editCampground.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        console.log(action.payload);
+
         state.message = action.payload;
       });
   },

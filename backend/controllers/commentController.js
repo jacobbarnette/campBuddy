@@ -4,18 +4,20 @@ const router = express.Router();
 const Campground = require("../models/campgroundModel");
 
 const postComment = asyncHandler(async (req, res) => {
+  console.log(req.body);
+  if (!req.body.comment) {
+    res.status(400);
+    throw new Error("Please add a comment");
+  }
   try {
     const campground = await Campground.findById(req.params.id);
 
-    console.log(
-      `this is from com ment controller babbbbbyyy`,
-      req.body.comment
-    );
     const comment = {
       user: req.user._id,
       comment: req.body.comment,
+      _id: campground._id,
+      createdAt: Date.now(),
     };
-    console.log(comment);
 
     campground.comments.push(comment);
 

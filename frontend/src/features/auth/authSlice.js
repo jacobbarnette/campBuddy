@@ -3,7 +3,7 @@ import axios from "axios";
 import authService from "./authService";
 
 const user = JSON.parse(localStorage.getItem("user"));
-const BASE_URL = "http://localhost:3001/api/users";
+const BASE_URL = "https://campbuddy.onrender.com/api/users/";
 
 const initialState = {
   user: user ? user : null,

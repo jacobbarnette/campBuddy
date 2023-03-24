@@ -25,7 +25,6 @@ const createCampground = async (campgroundData, token) => {
 };
 
 const createComment = async ({ id, token, comment }) => {
-  console.log(`called from service`, id, `token:`, token, comment);
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,

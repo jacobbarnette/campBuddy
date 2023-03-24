@@ -12,18 +12,6 @@ const Home = () => {
     (state) => state.auth
   );
 
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(getAllCampgrounds());
-    }
-  }, [status, dispatch]);
-
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(getAllUsers());
-    }
-  });
-
   if (status === "loading") {
     return (
       <div className="spinnerDiv">
