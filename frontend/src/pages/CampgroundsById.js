@@ -81,6 +81,15 @@ const CampgroundsById = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
+    const newCampground = {
+      id,
+      title,
+      location,
+      price,
+      description,
+      image,
+    };
+
     dispatch(editCampground({ id, newCampground: formData }));
     toast.success(`${title} changes saved`);
   };
@@ -93,7 +102,7 @@ const CampgroundsById = () => {
       dispatch(postComment({ id, comment }));
     }
   };
-
+  console.log(user);
   //check if user added campground, if true render delete/edit btn
   const didUserAddCampground = () => {
     if (user === null) {
@@ -101,9 +110,11 @@ const CampgroundsById = () => {
       return (
         <div className="btnContainer">
           <br />
-          <Button variant="primary" className="editBtn" onClick={handleShow}>
-            <FaPen></FaPen> Edit Campground
-          </Button>
+          <Button
+            variant="primary"
+            className="editBtn"
+            onClick={handleShow}
+          ></Button>
 
           <Button
             variant="danger"
@@ -209,7 +220,7 @@ const CampgroundsById = () => {
                     <div className=" py-2 comment-header">
                       <div>
                         <p className="commentSubmitter">
-                          <FaUser /> {commentedUser.name}
+                          <FaUser /> {commentedUser.name || "unknwon"}
                         </p>
                       </div>
                       <p className="text-muted commentDate">

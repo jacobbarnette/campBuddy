@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import campgroundService from "./campgroundService";
 
-const BASE_URL = "https://campbuddy.onrender.com/api/campgrounds";
+const BASE_URL = "https://campbuddy.onrender.com/api/campgrounds/";
 const initialState = {
   campgrounds: [],
   status: "idle",
