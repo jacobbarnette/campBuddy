@@ -218,7 +218,7 @@ const CampgroundsById = () => {
                     <div className=" py-2 comment-header">
                       <div>
                         <p className="commentSubmitter">
-                          <FaUser /> {commentedUser.name || "unknwon"}
+                          <FaUser /> {commentedUser.name}
                         </p>
                       </div>
                       <p className="text-muted commentDate">

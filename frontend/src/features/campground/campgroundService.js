@@ -62,8 +62,8 @@ const editCampground = async (id, newCampground, token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  console.log(`campground service ${newCampground}, ${id}`);
-  const response = await axios.put(`${BASE_URL}${id}`, newCampground, config);
+
+  const response = await axios.put(`${BASE_URL}/${id}`, newCampground, config);
   return response.data;
 };
 const campgroundService = {
