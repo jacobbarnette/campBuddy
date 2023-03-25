@@ -50,7 +50,11 @@ const CampgroundsById = () => {
   const handleClose = () => setShow(false);
   const handleDeleteClose = () => setDeleteShow(false);
   const handleOpen = () => {
-    setOpen(!open);
+    if (user === null) {
+      toast.error("Please sign in or register");
+    } else {
+      setOpen(!open);
+    }
   };
   const handleShow = () => {
     setShow(true);
@@ -96,13 +100,10 @@ const CampgroundsById = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (user === null) {
-      toast.error("Please sign in or register");
-    } else {
-      dispatch(postComment({ id, comment }));
-    }
+
+    dispatch(postComment({ id, comment }));
   };
-  console.log(user);
+
   //check if user added campground, if true render delete/edit btn
   const didUserAddCampground = () => {
     if (user === null) {
