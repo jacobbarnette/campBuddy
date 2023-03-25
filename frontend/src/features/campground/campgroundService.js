@@ -63,7 +63,7 @@ const editCampground = async (id, newCampground, token) => {
     },
   };
 
-  const response = await axios.put(`${BASE_URL}/${id}`, newCampground, config);
+  const response = await axios.put(`${BASE_URL}${id}`, newCampground, config);
   return response.data;
 };
 const campgroundService = {

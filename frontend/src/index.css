@@ -22,6 +22,13 @@ body {
   font-size: 2rem;
 }
 
+.viewCampgroundBtn:hover{
+  cursor: pointer;
+}
+.viewCampgroundBtn{
+  border: none;
+  text-decoration: none;
+}
 .welcome {
   font-size: 2em;
   color: white;
@@ -189,5 +196,9 @@ hr{
   .loginForm {
     width: 80%;
   }
+
+  
+
+  
   
 }

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Spinner } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import { getAllCampgrounds } from "../features/campground/campgroundSlice";
 import { getAllUsers } from "../features/auth/authSlice";
 
@@ -35,6 +35,13 @@ const Home = () => {
         <p className="welcomeTxt px-4 paragraphTxt">
           Feel free to share some of your own and comment on others!
         </p>
+
+        <a href="/Campgrounds" className="viewCampgroundBtn">
+          <p className="text-center welcomeTxt viewCampgrounds">
+            {" "}
+            View Campgrounds
+          </p>
+        </a>
       </section>
     );
   }
