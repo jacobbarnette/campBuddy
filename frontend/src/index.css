@@ -28,6 +28,8 @@ body {
 .viewCampgroundBtn{
   border: none;
   text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2em;
 }
 .welcome {
   font-size: 2em;
@@ -107,7 +109,7 @@ p{
 }
 .cardImg {
   width: 100vw;
-  height: 15vw;
+  height: 35vh;
   object-fit: cover;
 }
 
@@ -196,8 +198,13 @@ hr{
   .loginForm {
     width: 80%;
   }
-
-  
+  .listGrpContainer {
+    display: none;
+  }
+  .cardText{
+   margin-bottom: 2rem;
+  }
+ 
 
   
   

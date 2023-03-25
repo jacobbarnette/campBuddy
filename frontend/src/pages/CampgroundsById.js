@@ -248,7 +248,7 @@ const CampgroundsById = () => {
             <Modal.Body>
               <Form onSubmit={handleSubmit} className="">
                 <Form.Group className="description ">
-                  <Form.Label>Review:</Form.Label>
+                  <Form.Label></Form.Label>
                   <Form.Control
                     as="textarea"
                     rows={4}
@@ -262,13 +262,13 @@ const CampgroundsById = () => {
                 </Form.Group>
 
                 <Button
-                  style={{ width: "100%" }}
-                  classname="registerBtn"
+                  style={{ width: "100%", margin: " 1em 2em 0em 0em" }}
+                  classname="registerBtn my-5"
                   size="lg"
                   variant="primary"
                   type="submit"
                 >
-                  Save Changes
+                  Leave A Review
                 </Button>
               </Form>
             </Modal.Body>

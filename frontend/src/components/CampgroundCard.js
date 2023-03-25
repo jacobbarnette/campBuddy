@@ -25,14 +25,17 @@ const CampgroundCard = ({ campground }) => {
           <Card.Text className="price cardDetails px-2 text-muted">
             <FaDollarSign /> {campground.price}
           </Card.Text>
-          <Card.Text style={{ height: "5em" }} className=" cardDescription">
+          <Card.Text
+            style={{ height: "6em" }}
+            className="px-2 py-2 cardDescription"
+          >
             <p className="cardText ">
               {campground.description.substring(0, 150)}...
             </p>
           </Card.Text>
           <Button
             onClick={onClick}
-            className="my-2 py-2 cardBtn"
+            className="my-3 py-2 cardBtn"
             variant="primary"
           >
             View {campground.title}

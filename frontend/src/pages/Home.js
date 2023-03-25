@@ -1,16 +1,8 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Button, Spinner } from "react-bootstrap";
-import { getAllCampgrounds } from "../features/campground/campgroundSlice";
-import { getAllUsers } from "../features/auth/authSlice";
+import { useSelector } from "react-redux";
+import { Spinner } from "react-bootstrap";
 
 const Home = () => {
-  const dispatch = useDispatch();
-
-  const { campgrounds, status } = useSelector((state) => state.campground);
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.auth
-  );
+  const { status } = useSelector((state) => state.campground);
 
   if (status === "loading") {
     return (
@@ -37,8 +29,7 @@ const Home = () => {
         </p>
 
         <a href="/Campgrounds" className="viewCampgroundBtn">
-          <p className="text-center welcomeTxt viewCampgrounds">
-            {" "}
+          <p className="text-center welcomeTxt viewCampgrounds paragraphTxt">
             View Campgrounds
           </p>
         </a>
